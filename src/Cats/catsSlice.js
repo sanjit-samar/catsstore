@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cats: [],
+  catsData: [],
   isLoading: false,
 };
 
@@ -13,10 +13,11 @@ const catsSlice = createSlice({
       state.isLoading = true;
     },
     getCatsSuccess: (state, { payload }) => {
-      state.cats = payload;
+      state.catsData = payload;
       state.isLoading = false;
     },
-    getCatsFailure: () => {
+    getCatsFailure: (state) => {
+        state.isLoading = false;
       console.log("Failed request");
     },
   },
