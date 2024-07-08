@@ -6,10 +6,10 @@ const initialState = {
 };
 
 const catsSlice = createSlice({
-  name: "cats",
+  name: 'cats',
   initialState,
   reducers: {
-    getCatsfetch: (state) => {
+    getCatsFetch: (state) => {
       state.isLoading = true;
     },
     getCatsSuccess: (state, { payload }) => {
@@ -23,5 +23,5 @@ const catsSlice = createSlice({
   },
 });
 
-const { getCatsfetch, getCatsSuccess, getCatsFailure } = catsSlice.actions;
+export const { getCatsFetch, getCatsSuccess, getCatsFailure } = catsSlice.actions;
 export default catsSlice.reducer;

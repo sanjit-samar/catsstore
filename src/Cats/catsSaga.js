@@ -1,12 +1,21 @@
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { call, put, takeEvery } from "redux-saga/effects";
+//import catsApi from "../services/catsApi";
+import {getCatsSuccess} from './catsSlice';
 // call is to call the apis
 // put is used to allow call of actions
 // takeEvery to watch or trigger the function whenever action is called
 
 function* workGetCatsfetch(){
-    yield call()
+    // const catsResponse = yield call(catsApi());
+    // yield put(getCatsSuccess(catsResponse));
+    const catsResponse = yield call(()=> fetch('https://api.thecatapi.com/v1/breeds'));
+    const response = yield catsResponse.json();
+    const formattedResponse = response.slice(0,10);
+    yield put(getCatsSuccess(formattedResponse));
 }
 
-function* catSaga(){
-    yield takeEvery('cats/getCatsfetch', workGetCatsfetch); 
+function* catsSaga(){
+    yield takeEvery('cats/getCatsFetch', workGetCatsfetch); 
 }
+
+export default catsSaga;
