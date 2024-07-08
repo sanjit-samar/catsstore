@@ -3,4 +3,10 @@ import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 // put is used to allow call of actions
 // takeEvery to watch or trigger the function whenever action is called
 
+function* workGetCatsfetch(){
+    yield call()
+}
 
+function* catSaga(){
+    yield takeEvery('cats/getCatsfetch', workGetCatsfetch); 
+}
