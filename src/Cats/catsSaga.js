@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import catsApi from "../services/catsApi";
-import {getCatsSuccess} from './catsSlice';
+import {getCatsSuccess, getCatsFetch} from './catsSlice';
 // call is to call the apis
 // put is used to allow call of actions
 // takeEvery to watch or trigger the function whenever action is called
@@ -17,7 +17,8 @@ function* workGetCatsfetch(){
 }
 
 function* catsSaga(){
-    yield takeEvery('cats/getCatsFetch', workGetCatsfetch); 
+    // yield takeEvery('cats/getCatsFetch', workGetCatsfetch);
+    yield takeEvery(getCatsFetch.type, workGetCatsfetch); 
 }
 
 export default catsSaga;
